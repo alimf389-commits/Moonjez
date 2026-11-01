@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="أدوات مجانية وسريعة للنصوص والإنتاجية. Free, simple tools for writing and productivity.">
+  <meta name="theme-color" content="#101827">
+  <title>Smartly Tools — أدوات ذكية مجانية</title>
+  <style>
+    :root{--bg:#0b1220;--panel:#121d30;--panel2:#18263d;--text:#eef4ff;--muted:#a9b7cc;--accent:#8b7cff;--accent2:#36cfc9;--line:#283852}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#20254b 0,transparent 32%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+    .wrap{width:min(1050px,92%);margin:auto}.top{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+    .brand{font-weight:800;font-size:1.2rem;letter-spacing:.2px}.brand span{color:var(--accent2)}
+    button,select,textarea,input{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:10px 15px;background:var(--accent);color:white;font-weight:700}
+    .lang{background:var(--panel2);border:1px solid var(--line)}.hero{text-align:center;padding:45px 0 35px}.tag{display:inline-block;color:#b9fff6;background:#163a43;padding:5px 12px;border-radius:30px;font-size:.85rem}
+    h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.15;margin:18px 0 12px}.hero p{color:var(--muted);max-width:620px;margin:0 auto 22px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px;padding:12px 0 45px}
+    .card{background:linear-gradient(160deg,var(--panel),#101a2b);border:1px solid var(--line);border-radius:18px;padding:19px;box-shadow:0 12px 30px #0002}
+    .card h2{font-size:1.15rem;margin:0 0 5px}.desc{color:var(--muted);font-size:.9rem;margin:0 0 13px}
+    textarea,input{width:100%;background:#0b1424;color:var(--text);border:1px solid var(--line);border-radius:11px;padding:11px;outline:none}
+    textarea{min-height:112px;resize:vertical}textarea:focus,input:focus{border-color:var(--accent)}
+    .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.row button{flex:1}
+    .secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text)}
+    .result{color:var(--accent2);font-size:.9rem;min-height:24px;margin-top:9px}
+    .stats{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.9rem;margin-top:9px}
+    footer{border-top:1px solid var(--line);padding:22px 0 35px;text-align:center;color:var(--muted);font-size:.88rem}
+    .notice{background:#18263d;border:1px solid var(--line);border-radius:14px;padding:13px;color:var(--muted);font-size:.9rem;margin-bottom:25px}
+    [dir="ltr"] .top,[dir="ltr"] .row{direction:ltr}
+    @media(max-width:520px){.hero{padding-top:28px}.top{padding:14px 0}.card{padding:15px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">Smartly<span>Tools</span></div>
+      <button class="lang" id="langBtn" type="button">English</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <span class="tag" id="tag">مجانية • سريعة • بدون تسجيل</span>
+        <h1 id="headline">أدوات ذكية، تنجز أكثر</h1>
+        <p id="intro">مجموعة أدوات بسيطة تساعدك بالكتابة وتنظيم النصوص. تعمل مباشرة من جهازك بدون إنشاء حساب.</p>
+      </section>
+
+      <div class="notice" id="notice">الإصدار الأول يحتوي أدوات نصية مجانية تعمل داخل المتصفح. ما نطلب منك معلومات شخصية، والنصوص ما تنرسل إلى خادم.</div>
+
+      <section class="grid">
+        <article class="card">
+          <h2 id="wcTitle">عداد الكلمات والحروف</h2>
+          <p class="desc" id="wcDesc">اكتب أو الصق النص حتى تعرف عدد الكلمات والحروف.</p>
+          <textarea id="countText" placeholder="اكتب النص هنا..."></textarea>
+          <div class="stats"><span id="words">الكلمات: 0</span><span id="chars">الحروف: 0</span><span id="charsNo">بدون مسافات: 0</span></div>
+        </article>
+
+        <article class="card">
+          <h2 id="cleanTitle">تنظيف النص</h2>
+          <p class="desc" id="cleanDesc">إزالة المسافات الزائدة والأسطر الفارغة.</p>
+          <textarea id="cleanInput" placeholder="الصق النص هنا..."></textarea>
+          <div class="row"><button id="cleanBtn" type="button">تنظيف النص</button><button class="secondary" id="copyClean" type="button">نسخ</button></div>
+          <div class="result" id="cleanResult" aria-live="polite"></div>
+        </article>
+
+        <article class="card">
+          <h2 id="caseTitle">تغيير حالة الأحرف</h2>
+          <p class="desc" id="caseDesc">حوّل النص الإنكليزي إلى أحرف كبيرة أو صغيرة.</p>
+          <textarea id="caseInput" placeholder="Paste English text..."></textarea>
+          <div class="row"><button id="upperBtn" type="button">UPPERCASE</button><button class="secondary" id="lowerBtn" type="button">lowercase</button></div>
+          <div class="row"><button class="secondary" id="copyCase" type="button">نسخ النتيجة</button></div>
+          <div class="result" id="caseResult" aria-live="polite"></div>
+        </article>
+
+        <article class="card">
+          <h2 id="passTitle">مولّد كلمات مرور</h2>
+          <p class="desc" id="passDesc">أنشئ كلمة مرور عشوائية للاستخدام الشخصي.</p>
+          <label for="passLength" id="lengthLabel">طول كلمة المرور</label>
+          <input id="passLength" type="number" min="8" max="40" value="16">
+          <div class="row"><button id="generateBtn" type="button">إنشاء كلمة مرور</button></div>
+          <input id="password" readonly aria-label="Generated password" style="margin-top:10px">
+          <div class="row"><button class="secondary" id="copyPass" type="button">نسخ كلمة المرور</button></div>
+          <div class="result" id="passResult" aria-live="polite"></div>
+        </article>
+      </section>
+    </main>
+    <footer id="footer">© 2026 Smartly Tools · أدوات مجانية للجميع</footer>
+  </div>
+
+<script>
+const $ = id => document.getElementById(id);
+let lang = "ar";
+const copyText = async (value, target) => {
+  if (!value) { $(target).textContent = lang==="ar" ? "ماكو نص للنسخ." : "Nothing to copy."; return; }
+  try { await navigator.clipboard.writeText(value); $(target).textContent = lang==="ar" ? "تم النسخ." : "Copied."; }
+  catch { $(target).textContent = lang==="ar" ? "تعذّر النسخ؛ حدّد النص وانسخه يدوياً." : "Copy unavailable; select and copy manually."; }
+};
+$("countText").addEventListener("input", () => {
+  const v=$("countText").value;
+  const words=v.trim()?v.trim().split(/\s+/u).length:0;
+  $("words").textContent=(lang==="ar"?"الكلمات: ":"Words: ")+words;
+  $("chars").textContent=(lang==="ar"?"الحروف: ":"Characters: ")+v.length;
+  $("charsNo").textContent=(lang==="ar"?"بدون مسافات: ":"No spaces: ")+v.replace(/\s/g,"").length;
+});
+$("cleanBtn").onclick=()=>{
+  const v=$("cleanInput").value.replace(/[ \t]+/g," ").replace(/\n\s*\n+/g,"\n").trim();
+  $("cleanInput").value=v; $("cleanResult").textContent=lang==="ar"?"تم تنظيف النص.":"Text cleaned.";
+};
+$("copyClean").onclick=()=>copyText($("cleanInput").value,"cleanResult");
+$("upperBtn").onclick=()=>{$("caseInput").value=$("caseInput").value.toUpperCase();$("caseResult").textContent=lang==="ar"?"تم التحويل.":"Converted.";};
+$("lowerBtn").onclick=()=>{$("caseInput").value=$("caseInput").value.toLowerCase();$("caseResult").textContent=lang==="ar"?"تم التحويل.":"Converted.";};
+$("copyCase").onclick=()=>copyText($("caseInput").value,"caseResult");
+$("generateBtn").onclick=()=>{
+  const n=Math.max(8,Math.min(40,Number($("passLength").value)||16));
+  const chars="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*+-_";
+  const random=new Uint32Array(n); crypto.getRandomValues(random);
+  $("password").value=Array.from(random,x=>chars[x%chars.length]).join("");
+  $("passResult").textContent=lang==="ar"?"تم إنشاء كلمة المرور على جهازك.":"Password generated on your device.";
+};
+$("copyPass").onclick=()=>copyText($("password").value,"passResult");
+const translations={
+ en:{tag:"Free • Fast • No sign-up",headline:"Smart tools. Get more done.",intro:"A simple collection of tools for writing and text productivity. Works in your browser with no account.",notice:"This first version includes free text tools that run in your browser. Your text is not sent to a server.",wcTitle:"Word & Character Counter",wcDesc:"Type or paste text to count words and characters.",cleanTitle:"Text Cleaner",cleanDesc:"Remove extra spaces and blank lines.",caseTitle:"Text Case Converter",caseDesc:"Convert English text to uppercase or lowercase.",passTitle:"Password Generator",passDesc:"Create a random password for personal use.",lengthLabel:"Password length",cleanBtn:"Clean text",copy:"Copy",copyResult:"Copy result",generate:"Generate password",copyPass:"Copy password",footer:"© 2026 Smartly Tools · Free tools for everyone",placeholder:"Type your text here...",paste:"Paste your text here...",passDone:"Password generated on your device."},
+ ar:{tag:"مجانية • سريعة • بدون تسجيل",headline:"أدوات ذكية، تنجز أكثر",intro:"مجموعة أدوات بسيطة تساعدك بالكتابة وتنظيم النصوص. تعمل مباشرة من جهازك بدون إنشاء حساب.",notice:"الإصدار الأول يحتوي أدوات نصية مجانية تعمل داخل المتصفح. ما نطلب منك معلومات شخصية، والنصوص ما تنرسل إلى خادم.",wcTitle:"عداد الكلمات والحروف",wcDesc:"اكتب أو الصق النص حتى تعرف عدد الكلمات والحروف.",cleanTitle:"تنظيف النص",cleanDesc:"إزالة المسافات الزائدة والأسطر الفارغة.",caseTitle:"تغيير حالة الأحرف",caseDesc:"حوّل النص الإنكليزي إلى أحرف كبيرة أو صغيرة.",passTitle:"مولّد كلمات مرور",passDesc:"أنشئ كلمة مرور عشوائية للاستخدام الشخصي.",lengthLabel:"طول كلمة المرور",footer:"© 2026 Smartly Tools · أدوات مجانية للجميع"}
+};
+$("langBtn").onclick=()=>{
+  lang=lang==="ar"?"en":"ar"; const t=translations[lang];
+  document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+  $("langBtn").textContent=lang==="ar"?"English":"العربية";
+  ["tag","headline","intro","notice","wcTitle","wcDesc","cleanTitle","cleanDesc","caseTitle","caseDesc","passTitle","passDesc","lengthLabel","footer"].forEach(id=>$(id).textContent=t[id]);
+  $("countText").placeholder=lang==="ar"?"اكتب النص هنا...":"Type your text here...";
+  $("cleanInput").placeholder=lang==="ar"?"الصق النص هنا...":"Paste your text here...";
+  $("caseInput").placeholder=lang==="ar"?"اكتب النص الإنكليزي هنا...":"Paste English text...";
+  $("words").textContent=(lang==="ar"?"الكلمات: ":"Words: ")+($("countText").value.trim()? $("countText").value.trim().split(/\s+/u).length:0);
+  $("chars").textContent=(lang==="ar"?"الحروف: ":"Characters: ")+$("countText").value.length;
+  $("charsNo").textContent=(lang==="ar"?"بدون مسافات: ":"No spaces: ")+$("countText").value.replace(/\s/g,"").length;
+  $("cleanBtn").textContent=lang==="ar"?"تنظيف النص":"Clean text";
+  $("copyClean").textContent=lang==="ar"?"نسخ":"Copy";
+  $("copyCase").textContent=lang==="ar"?"نسخ النتيجة":"Copy result";
+  $("generateBtn").textContent=lang==="ar"?"إنشاء كلمة مرور":"Generate password";
+  $("copyPass").textContent=lang==="ar"?"نسخ كلمة المرور":"Copy password";
+};
+</script>
+</body>
+</html>
