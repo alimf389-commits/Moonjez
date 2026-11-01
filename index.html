@@ -33,7 +33,7 @@
 .q-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
 .q-actions button{background:var(--accent);border:0;color:white;border-radius:10px;padding:9px 13px;font-weight:800}
 .q-actions button.alt{background:#21443f}
-\n.photo-search{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.photo-box{background:#101b2c;border:1px dashed #64779a;border-radius:16px;padding:16px}.photo-box textarea{width:100%;min-height:100px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px}.photo-preview{display:none;width:100%;max-height:230px;object-fit:contain;margin:10px 0;border-radius:12px}.photo-results{display:grid;gap:10px;margin-top:14px}.photo-result{background:var(--panel2);padding:13px;border-radius:12px;border:1px solid var(--line)}.photo-status{color:var(--muted);font-size:13px;margin-top:10px}@media(max-width:700px){.photo-search{grid-template-columns:1fr}}</style>
+\n.photo-search{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.photo-box{background:#101b2c;border:1px dashed #64779a;border-radius:16px;padding:16px}.photo-box textarea{width:100%;min-height:100px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px}.photo-preview{display:none;width:100%;max-height:230px;object-fit:contain;margin:10px 0;border-radius:12px}.photo-results{display:grid;gap:10px;margin-top:14px}.photo-result h3{margin:0 0 10px}.answer-body{white-space:pre-wrap;line-height:2;color:var(--text)}.ministerial-answer{border-right:3px solid var(--good)}#solvePhoto:disabled,#solveText:disabled{opacity:.55;cursor:wait}.photo-result{background:var(--panel2);padding:13px;border-radius:12px;border:1px solid var(--line)}.photo-status{color:var(--muted);font-size:13px;margin-top:10px}@media(max-width:700px){.photo-search{grid-template-columns:1fr}}</style>
 </head>
 <body>
 <div class="wrap">
@@ -78,7 +78,7 @@
 <div class="notice" style="margin-top:14px">ملاحظة: منشورات تيليغرام تظهر داخل مُنجز، لكن ملفات PDF الأصلية ما زالت مستضافة لدى الناشر. استضافتها مباشرة على خادم مُنجز تحتاج تنزيل الملفات والتحقق من حقوق إعادة نشرها.</div><div class="notice" style="margin-top:14px">تنبيه: هذه روابط لمصادر تعليمية خارجية وليست ملفات مستضافة داخل Moonjez. نضيف الأرشيف الداخلي والأسئلة المحلولة بعد تدقيق كل سؤال ومصدره.</div>
 </div></section>
 \n
-<section class="section" id="photoQuestion"><div class="section-head"><div><h2>صوّر سؤالك واعرف وزاريته</h2><div class="muted">ارفع صورة السؤال حتى نبحث عنه في بنك أسئلة مُنجز</div></div></div><div class="panel"><div class="photo-search"><div class="photo-box"><b>📷 صوّر أو اختر السؤال</b><p class="muted">خلي السؤال واضح وكامل داخل الصورة.</p><input id="questionImage" type="file" accept="image/*" capture="environment"><img id="questionPreview" class="photo-preview" alt="معاينة السؤال"><button class="btn" id="readQuestion" type="button">اقرأ الصورة وابحث</button></div><div class="photo-box"><b>أو اكتب السؤال</b><p class="muted">استخدمها إذا تعذرت قراءة الصورة.</p><textarea id="questionText" placeholder="اكتب نص السؤال هنا..."></textarea><button class="btn secondary" id="searchQuestionText" type="button" style="margin-top:10px">ابحث عن السؤال</button></div></div><div class="photo-status" id="photoStatus">راح نطابقه مع الأسئلة المفهرسة داخل مُنجز.</div><div class="photo-results" id="photoResults"></div><div class="notice" style="margin-top:12px">الفهرس الحالي تجريبي ومحدود. ما ننسب السؤال لسنة أو دور إلا إذا موجود عندنا مصدر موثّق.</div></div></section><section class="section" id="realBank">
+<section class="section" id="photoQuestion"><div class="section-head"><div><h2>حل سؤالك بالصيغة الوزارية</h2><div class="muted">صوّر السؤال أو اكتبه، واحصل على حل مرتب خطوة بخطوة</div></div></div><div class="panel"><div class="photo-search"><div class="photo-box"><b>📷 صورة السؤال</b><p class="muted">صوّر السؤال كاملاً وبوضوح، ويفضّل أن تكون الصورة مستقيمة.</p><input id="questionImage" type="file" accept="image/png,image/jpeg,image/webp" capture="environment"><img id="questionPreview" class="photo-preview" alt="معاينة السؤال"><button class="btn" id="solvePhoto" type="button">حل السؤال من الصورة</button></div><div class="photo-box"><b>أو اكتب السؤال</b><p class="muted">تگدر تكتب السؤال أو تضيف توضيح للصورة.</p><textarea id="questionText" placeholder="اكتب نص السؤال هنا..." maxlength="12000"></textarea><button class="btn secondary" id="solveText" type="button" style="margin-top:10px">حل السؤال المكتوب</button></div></div><div class="photo-status" id="photoStatus" aria-live="polite">الحل راح يترتب بصيغة امتحانية: المعطيات، المطلوب، القانون، خطوات الحل والجواب النهائي.</div><div class="photo-results" id="photoResults"></div><div class="notice" style="margin-top:12px">ملاحظة: الذكاء الاصطناعي يساعد بالحل، لكن راجع الناتج مع مدرسك، خصوصاً إذا الصورة غير واضحة أو السؤال يحتمل أكثر من تفسير. لا ننسب السؤال إلى سنة وزارية من دون مصدر موثوق.</div></div></section><section class="section" id="realBank">
 <div class="section-head"><div><h2>بنك الأسئلة — الرياضيات</h2><div class="muted">أسئلة فعلية للتدريب مع إظهار الحل عند الحاجة</div></div></div>
 <div class="panel">
 <div class="library-tools">
@@ -115,9 +115,64 @@
 </main>
 <footer class="footer">مُنجز Moonjez © 2026 — صُمم لمساعدة طلبة السادس العلمي في العراق</footer>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
 <script>
-const imageInput=document.getElementById('questionImage');const preview=document.getElementById('questionPreview');const photoStatus=document.getElementById('photoStatus');const photoResults=document.getElementById('photoResults');imageInput.addEventListener('change',()=>{const f=imageInput.files[0];if(f){preview.src=URL.createObjectURL(f);preview.style.display='block';photoStatus.textContent='تم اختيار الصورة.';}});function norm(s){return (s||'').toLowerCase().replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[^\u0600-\u06FFa-z0-9]/g,' ').split(/\s+/).filter(x=>x.length>1);}function searchPhotoText(s){const words=[...new Set(norm(s))];const cards=[...document.querySelectorAll('#questionBank .q-card')];const found=cards.map(card=>{const q=norm((card.querySelector('h3')?.innerText||'')+' '+(card.querySelector('p')?.innerText||''));const hits=words.filter(w=>q.includes(w)).length;return {card,hits};}).filter(x=>x.hits>=2).sort((a,b)=>b.hits-a.hits);photoResults.innerHTML='';if(!found.length){photoStatus.textContent='ما لكينا تطابق ضمن الأسئلة المفهرسة حالياً؛ هذا لا يعني أن السؤال لم يأتِ وزارياً.';return;}found.slice(0,5).forEach(x=>{const d=document.createElement('div');d.className='photo-result';d.textContent=x.card.querySelector('.q-meta').innerText+' — '+x.card.querySelector('h3').innerText;photoResults.append(d);});photoStatus.textContent='نتائج محتملة؛ تأكد من نص السؤال والمصدر.';}document.getElementById('searchQuestionText').addEventListener('click',()=>searchPhotoText(document.getElementById('questionText').value));document.getElementById('readQuestion').addEventListener('click',async()=>{const f=imageInput.files[0];if(!f){photoStatus.textContent='اختار صورة أولاً.';return;}if(!window.Tesseract){photoStatus.textContent='قارئ الصور لم يحمّل. اكتب السؤال في الخانة المقابلة حالياً.';return;}photoStatus.textContent='جاري قراءة الصورة...';try{const w=await Tesseract.createWorker('ara+eng');const out=await w.recognize(f);await w.terminate();document.getElementById('questionText').value=out.data.text;searchPhotoText(out.data.text);}catch(e){photoStatus.textContent='تعذرت قراءة الصورة؛ اكتب السؤال يدوياً.';}});
+// ضع رابط Cloudflare Worker المنشور هنا بعد إكمال إعداد الخادم.
+const SOLVER_API_URL = "PASTE_CLOUDFLARE_WORKER_URL_HERE";
+const imageInput=document.getElementById('questionImage');
+const preview=document.getElementById('questionPreview');
+const photoStatus=document.getElementById('photoStatus');
+const photoResults=document.getElementById('photoResults');
+let selectedImage=null;
+imageInput.addEventListener('change',()=>{
+ const f=imageInput.files&&imageInput.files[0];
+ selectedImage=f||null;
+ if(f){preview.src=URL.createObjectURL(f);preview.style.display='block';photoStatus.textContent='تم اختيار الصورة. اضغط حل السؤال من الصورة.';}
+ else{preview.style.display='none';}
+});
+function imageAsDataURL(file){
+ return new Promise((resolve,reject)=>{
+  const reader=new FileReader();
+  reader.onload=()=>resolve(reader.result);
+  reader.onerror=()=>reject(new Error('تعذرت قراءة الصورة من الجهاز.'));
+  reader.readAsDataURL(file);
+ });
+}
+async function solveQuestion(withImage){
+ const question=document.getElementById('questionText').value.trim();
+ if(!question&&!withImage){photoStatus.textContent='اكتب السؤال أو اختار صورة أولاً.';return;}
+ if(withImage&&!selectedImage){photoStatus.textContent='اختار صورة السؤال أولاً.';return;}
+ if(!SOLVER_API_URL||SOLVER_API_URL.includes('PASTE_CLOUDFLARE')){
+  photoStatus.textContent='ميزة الحل جاهزة من جهة الموقع، لكن محرك الذكاء الاصطناعي يحتاج نشر الخادم الآمن وربطه. ما راح أعرض لك حلاً وهمياً.';
+  photoResults.innerHTML='<div class="photo-result"><b>باقي تفعيل واحد:</b><p>نشر ملف worker/src/index.js على Cloudflare، إضافة مفتاح OpenAI كـ Secret باسم OPENAI_API_KEY، ثم وضع رابط الخادم في إعداد SOLVER_API_URL داخل index.html.</p></div>';
+  return;
+ }
+ const buttons=[document.getElementById('solvePhoto'),document.getElementById('solveText')];
+ buttons.forEach(b=>b.disabled=true);
+ photoResults.innerHTML='';
+ photoStatus.textContent='جاري تحليل السؤال وكتابة الحل الوزاري...';
+ try{
+  const payload={question};
+  if(withImage) payload.image=await imageAsDataURL(selectedImage);
+  const response=await fetch(SOLVER_API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  const data=await response.json();
+  if(!response.ok) throw new Error(data.error||'تعذر حل السؤال حالياً.');
+  const result=document.createElement('div');
+  result.className='photo-result ministerial-answer';
+  const heading=document.createElement('h3');
+  heading.textContent='الحل الوزاري المقترح';
+  const body=document.createElement('div');
+  body.className='answer-body';
+  body.textContent=data.answer||'لم يصل حل قابل للعرض.';
+  result.append(heading,body);
+  photoResults.append(result);
+  photoStatus.textContent='اكتمل الحل. راجع الخطوات والوحدات قبل اعتماد الإجابة.';
+ }catch(error){
+  photoStatus.textContent=error.message||'صار خطأ أثناء الحل. حاول مرة ثانية.';
+ }finally{buttons.forEach(b=>b.disabled=false);}
+}
+document.getElementById('solvePhoto').addEventListener('click',()=>solveQuestion(true));
+document.getElementById('solveText').addEventListener('click',()=>solveQuestion(false));
 const librarySubject=document.getElementById('librarySubject');
 const libraryType=document.getElementById('libraryType');
 function updateLibrary(){
