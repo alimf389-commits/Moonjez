@@ -21,6 +21,18 @@
 .resource a{display:inline-block;background:var(--accent);padding:9px 13px;border-radius:10px;font-weight:800;font-size:13px}
 .resource.secondary a{background:#21443f}
 @media(max-width:700px){.library-tools,.resource-grid{grid-template-columns:1fr}}
+\n
+.question-bank{display:grid;gap:13px;margin-top:14px}
+.q-card{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:17px}
+.q-meta{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--cyan);font-weight:800}
+.q-card h3{font-size:17px;margin:9px 0}
+.q-card p{color:var(--muted);margin:8px 0}
+.q-solution{display:none;margin-top:12px;padding:13px;background:#101b2c;border-radius:12px;border-right:3px solid var(--good)}
+.q-solution.show{display:block}
+.q-solution ol{padding-right:20px}
+.q-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.q-actions button{background:var(--accent);border:0;color:white;border-radius:10px;padding:9px 13px;font-weight:800}
+.q-actions button.alt{background:#21443f}
 \n</style>
 </head>
 <body>
@@ -60,6 +72,38 @@
 </div>
 <div class="notice" style="margin-top:14px">تنبيه: هذه روابط لمصادر تعليمية خارجية وليست ملفات مستضافة داخل Moonjez. نضيف الأرشيف الداخلي والأسئلة المحلولة بعد تدقيق كل سؤال ومصدره.</div>
 </div></section>
+\n
+<section class="section" id="realBank">
+<div class="section-head"><div><h2>بنك الأسئلة — الرياضيات</h2><div class="muted">أسئلة فعلية للتدريب مع إظهار الحل عند الحاجة</div></div></div>
+<div class="panel">
+<div class="library-tools">
+<select id="bankCategory" aria-label="نوع الأسئلة"><option value="all">كل الأسئلة</option><option value="ministerial">وزاريات</option><option value="enrichment">إثرائيات</option></select>
+<select id="bankChapter" aria-label="الفصل"><option value="all">كل الفصول</option><option value="1">الفصل الأول: الأعداد المركبة</option></select>
+</div>
+<div class="question-bank" id="questionBank">
+<article class="q-card" data-category="ministerial" data-chapter="1">
+<div class="q-meta"><span>وزاري — رياضيات</span><span>2025 · الدور الثالث</span><span>الفصل الأول: الأعداد المركبة</span></div>
+<h3>حل المعادلة في مجموعة الأعداد المركبة:</h3>
+<p dir="ltr" style="text-align:left;font-size:19px;color:var(--text)">z² + 3zi = −4</p>
+<div class="q-actions"><button type="button" class="show-solution">عرض الحل النموذجي</button><a class="muted" href="https://yudrik.com/en/blog/mathematics_6th_scientific_2025_round3" target="_blank" rel="noopener">مصدر السؤال</a></div>
+<div class="q-solution"><b>الحل خطوة بخطوة:</b><ol><li>ننقل −4 إلى الطرف الأيسر: z² + 3zi + 4 = 0.</li><li>نلاحظ أن 4 = −4i²، فتصبح: z² + 3zi − 4i² = 0.</li><li>نحلل: (z + 4i)(z − i) = 0.</li><li>إذن z = −4i أو z = i.</li></ol><b>مجموعة الحل: {−4i, i}</b></div>
+</article>
+<article class="q-card" data-category="enrichment" data-chapter="1">
+<div class="q-meta"><span>إثرائي — من إعداد Moonjez</span><span>الفصل الأول: الأعداد المركبة</span></div>
+<h3>إذا كان z = 2 − 3i، أوجد مرافق العدد z ثم احسب z + z̄.</h3>
+<div class="q-actions"><button type="button" class="show-solution alt">عرض الحل</button></div>
+<div class="q-solution"><b>الحل:</b><ol><li>مرافق العدد المركب نغيّر إشارة الجزء التخيلي، لذلك z̄ = 2 + 3i.</li><li>نجمع: z + z̄ = (2 − 3i) + (2 + 3i).</li><li>تُلغى الحدود التخيلية، والناتج 4.</li></ol><b>الجواب: z̄ = 2 + 3i، و z + z̄ = 4.</b></div>
+</article>
+<article class="q-card" data-category="enrichment" data-chapter="1">
+<div class="q-meta"><span>إثرائي — من إعداد Moonjez</span><span>الفصل الأول: الأعداد المركبة</span></div>
+<h3>أوجد قيمة (1 + i)² واكتب الناتج بالصورة a + bi.</h3>
+<div class="q-actions"><button type="button" class="show-solution alt">عرض الحل</button></div>
+<div class="q-solution"><b>الحل:</b><ol><li>(1 + i)² = 1 + 2i + i².</li><li>نعوّض i² = −1.</li><li>الناتج = 1 + 2i − 1 = 2i.</li></ol><b>الجواب: 2i.</b></div>
+</article>
+</div>
+<div class="notice" style="margin-top:14px">هذه بداية بنك الرياضيات وليست أرشيفاً كاملاً. السؤال الوزاري موضح بسنة ودور ومصدر، وأسئلة الإثرائي من إعداد Moonjez. نضيف بقية السنوات والفصول بعد مطابقة نصوصها مع أوراق الامتحان.</div>
+</div>
+</section>
 \n<section class="section" id="planner"><div class="section-head"><div><h2>جدول دراستي</h2><div class="muted">أضف مهامك اليومية وحدد اللي أنجزته</div></div></div>
 <div class="panel"><form id="taskForm" class="taskrow"><input id="taskInput" maxlength="90" placeholder="مثلاً: مراجعة الفصل الأول — فيزياء" required><button class="btn" type="submit">إضافة</button></form><div id="tasks"></div><div class="muted" id="progress">ما عندك مهام بعد. أضف أول مهمة!</div></div></section>
 <section class="section"><div class="panel"><h3>المساعد الذكي</h3><p class="muted">نخطط لإضافة مساعد يشرح الدروس، يبسط الأفكار ويساعدك بحل الأسئلة خطوة بخطوة.</p><div class="notice">هذه الميزة قيد التطوير، ولا تتوفر محادثة ذكاء اصطناعي مباشرة في النسخة الحالية.</div></div></section>
@@ -79,6 +123,11 @@ function updateLibrary(){
 librarySubject.addEventListener('change',updateLibrary);
 libraryType.addEventListener('change',updateLibrary);
 updateLibrary();
+\n
+document.querySelectorAll('.show-solution').forEach(btn=>btn.addEventListener('click',()=>{const sol=btn.closest('.q-card').querySelector('.q-solution');sol.classList.toggle('show');btn.textContent=sol.classList.contains('show')?'إخفاء الحل':'عرض الحل'}));
+function filterBank(){const cat=document.getElementById('bankCategory').value;const chapter=document.getElementById('bankChapter').value;document.querySelectorAll('#questionBank .q-card').forEach(card=>{card.hidden=!((cat==='all'||card.dataset.category===cat)&&(chapter==='all'||card.dataset.chapter===chapter));});}
+document.getElementById('bankCategory').addEventListener('change',filterBank);
+document.getElementById('bankChapter').addEventListener('change',filterBank);
 \nconst answers=[...document.querySelectorAll('.answer')];answers.forEach(b=>b.addEventListener('click',()=>{answers.forEach(x=>x.classList.remove('selected'));b.classList.add('selected');document.getElementById('quizResult').textContent=b.dataset.correct==='true'?'إجابة صحيحة! أحسنت.':'مو صحيح، حاول مرة ثانية.';}));
 const key='moonjez_tasks_v1';let tasks=[];try{tasks=JSON.parse(localStorage.getItem(key)||'[]')}catch(e){tasks=[]}
 const list=document.getElementById('tasks'),progress=document.getElementById('progress');
