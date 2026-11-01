@@ -1,142 +1,52 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="أدوات مجانية وسريعة للنصوص والإنتاجية. Free, simple tools for writing and productivity.">
-  <meta name="theme-color" content="#101827">
-  <title>Smartly Tools — أدوات ذكية مجانية</title>
-  <style>
-    :root{--bg:#0b1220;--panel:#121d30;--panel2:#18263d;--text:#eef4ff;--muted:#a9b7cc;--accent:#8b7cff;--accent2:#36cfc9;--line:#283852}
-    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#20254b 0,transparent 32%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
-    .wrap{width:min(1050px,92%);margin:auto}.top{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
-    .brand{font-weight:800;font-size:1.2rem;letter-spacing:.2px}.brand span{color:var(--accent2)}
-    button,select,textarea,input{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:10px 15px;background:var(--accent);color:white;font-weight:700}
-    .lang{background:var(--panel2);border:1px solid var(--line)}.hero{text-align:center;padding:45px 0 35px}.tag{display:inline-block;color:#b9fff6;background:#163a43;padding:5px 12px;border-radius:30px;font-size:.85rem}
-    h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.15;margin:18px 0 12px}.hero p{color:var(--muted);max-width:620px;margin:0 auto 22px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px;padding:12px 0 45px}
-    .card{background:linear-gradient(160deg,var(--panel),#101a2b);border:1px solid var(--line);border-radius:18px;padding:19px;box-shadow:0 12px 30px #0002}
-    .card h2{font-size:1.15rem;margin:0 0 5px}.desc{color:var(--muted);font-size:.9rem;margin:0 0 13px}
-    textarea,input{width:100%;background:#0b1424;color:var(--text);border:1px solid var(--line);border-radius:11px;padding:11px;outline:none}
-    textarea{min-height:112px;resize:vertical}textarea:focus,input:focus{border-color:var(--accent)}
-    .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.row button{flex:1}
-    .secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text)}
-    .result{color:var(--accent2);font-size:.9rem;min-height:24px;margin-top:9px}
-    .stats{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.9rem;margin-top:9px}
-    footer{border-top:1px solid var(--line);padding:22px 0 35px;text-align:center;color:var(--muted);font-size:.88rem}
-    .notice{background:#18263d;border:1px solid var(--line);border-radius:14px;padding:13px;color:var(--muted);font-size:.9rem;margin-bottom:25px}
-    [dir="ltr"] .top,[dir="ltr"] .row{direction:ltr}
-    @media(max-width:520px){.hero{padding-top:28px}.top{padding:14px 0}.card{padding:15px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827">
+<meta name="description" content="مُنجز Moonjez منصة مساعدة لطلاب السادس العلمي في العراق: مواد، اختبارات، تنظيم الدراسة ومراجعة الدروس.">
+<title>مُنجز | Moonjez — رفيق السادس العلمي</title>
+<style>
+:root{--bg:#0b1220;--panel:#121d30;--panel2:#192840;--text:#eef4ff;--muted:#a9b7cc;--accent:#8b7cff;--cyan:#43d6c5;--line:#293952;--good:#55d6a3}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#26365d 0,transparent 38%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7}a{color:inherit;text-decoration:none}.wrap{width:min(1080px,92%);margin:auto}.top{display:flex;align-items:center;justify-content:space-between;padding:20px 0}.brand{font-size:25px;font-weight:900;letter-spacing:-1px}.brand span{color:var(--cyan)}.tag{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:5px 10px;border-radius:30px}.hero{padding:46px 0 30px;display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:center}.eyebrow{color:var(--cyan);font-weight:700;font-size:14px}.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.2;margin:12px 0}.hero p{color:var(--muted);max-width:620px}.hero-card,.panel,.subject,.tool{background:linear-gradient(145deg,var(--panel),#101a2b);border:1px solid var(--line);border-radius:22px}.hero-card{padding:25px}.hero-card strong{font-size:42px;display:block;color:var(--cyan)}.hero-card small{color:var(--muted)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:0;border-radius:13px;padding:12px 18px;background:var(--accent);color:white;font-weight:800;cursor:pointer;font-size:15px}.btn.secondary{background:var(--panel2);border:1px solid var(--line)}.section{padding:26px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}.section h2{font-size:24px;margin:0}.muted{color:var(--muted);font-size:14px}.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.subject{padding:17px;transition:.2s}.subject:active{transform:scale(.98)}.subject .emoji{font-size:25px}.subject h3{margin:5px 0;font-size:17px}.subject p{margin:0;color:var(--muted);font-size:13px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}.panel{padding:20px}.panel h3{margin:0 0 8px}.quiz-q{font-weight:700;margin:12px 0}.answers{display:grid;gap:8px}.answer{background:var(--panel2);border:1px solid var(--line);padding:10px 12px;border-radius:12px;color:var(--text);text-align:right;cursor:pointer}.answer.selected{border-color:var(--accent);background:#29294b}.result{min-height:28px;color:var(--cyan);font-weight:700;margin-top:8px}.taskrow{display:flex;gap:9px;margin:12px 0}.taskrow input,.taskrow select{min-width:0;flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:11px;color:var(--text);padding:11px}.task{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}.task label{display:flex;gap:9px;align-items:center}.task.done span{text-decoration:line-through;color:var(--muted)}.delete{background:none;border:0;color:#ff8c9b;font-size:18px}.notice{background:#18263d;border:1px solid var(--line);padding:14px;border-radius:14px;color:var(--muted);font-size:13px}.footer{padding:30px 0 45px;text-align:center;color:var(--muted);font-size:13px}
+@media(max-width:700px){.hero{grid-template-columns:1fr;padding-top:25px}.subjects{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.hero-card{display:none}}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="top">
-      <div class="brand">Smartly<span>Tools</span></div>
-      <button class="lang" id="langBtn" type="button">English</button>
-    </header>
-
-    <main>
-      <section class="hero">
-        <span class="tag" id="tag">مجانية • سريعة • بدون تسجيل</span>
-        <h1 id="headline">أدوات ذكية، تنجز أكثر</h1>
-        <p id="intro">مجموعة أدوات بسيطة تساعدك بالكتابة وتنظيم النصوص. تعمل مباشرة من جهازك بدون إنشاء حساب.</p>
-      </section>
-
-      <div class="notice" id="notice">الإصدار الأول يحتوي أدوات نصية مجانية تعمل داخل المتصفح. ما نطلب منك معلومات شخصية، والنصوص ما تنرسل إلى خادم.</div>
-
-      <section class="grid">
-        <article class="card">
-          <h2 id="wcTitle">عداد الكلمات والحروف</h2>
-          <p class="desc" id="wcDesc">اكتب أو الصق النص حتى تعرف عدد الكلمات والحروف.</p>
-          <textarea id="countText" placeholder="اكتب النص هنا..."></textarea>
-          <div class="stats"><span id="words">الكلمات: 0</span><span id="chars">الحروف: 0</span><span id="charsNo">بدون مسافات: 0</span></div>
-        </article>
-
-        <article class="card">
-          <h2 id="cleanTitle">تنظيف النص</h2>
-          <p class="desc" id="cleanDesc">إزالة المسافات الزائدة والأسطر الفارغة.</p>
-          <textarea id="cleanInput" placeholder="الصق النص هنا..."></textarea>
-          <div class="row"><button id="cleanBtn" type="button">تنظيف النص</button><button class="secondary" id="copyClean" type="button">نسخ</button></div>
-          <div class="result" id="cleanResult" aria-live="polite"></div>
-        </article>
-
-        <article class="card">
-          <h2 id="caseTitle">تغيير حالة الأحرف</h2>
-          <p class="desc" id="caseDesc">حوّل النص الإنكليزي إلى أحرف كبيرة أو صغيرة.</p>
-          <textarea id="caseInput" placeholder="Paste English text..."></textarea>
-          <div class="row"><button id="upperBtn" type="button">UPPERCASE</button><button class="secondary" id="lowerBtn" type="button">lowercase</button></div>
-          <div class="row"><button class="secondary" id="copyCase" type="button">نسخ النتيجة</button></div>
-          <div class="result" id="caseResult" aria-live="polite"></div>
-        </article>
-
-        <article class="card">
-          <h2 id="passTitle">مولّد كلمات مرور</h2>
-          <p class="desc" id="passDesc">أنشئ كلمة مرور عشوائية للاستخدام الشخصي.</p>
-          <label for="passLength" id="lengthLabel">طول كلمة المرور</label>
-          <input id="passLength" type="number" min="8" max="40" value="16">
-          <div class="row"><button id="generateBtn" type="button">إنشاء كلمة مرور</button></div>
-          <input id="password" readonly aria-label="Generated password" style="margin-top:10px">
-          <div class="row"><button class="secondary" id="copyPass" type="button">نسخ كلمة المرور</button></div>
-          <div class="result" id="passResult" aria-live="polite"></div>
-        </article>
-      </section>
-    </main>
-    <footer id="footer">© 2026 Smartly Tools · أدوات مجانية للجميع</footer>
-  </div>
-
+<div class="wrap">
+<header class="top"><a class="brand" href="#">مُنجز<span>.</span></a><span class="tag">منصة السادس العلمي — العراق</span></header>
+<main>
+<section class="hero">
+<div><div class="eyebrow">خطوة بخطوة نحو هدفك</div><h1>دراستك تصير<br><span style="color:var(--cyan)">أوضح وأسهل.</span></h1><p>مكان واحد يساعدك ترتّب دراستك، تراجع مواد السادس العلمي، تختبر فهمك وتتابع إنجازك. ابدأ بخطوة صغيرة اليوم.</p><div class="actions"><a class="btn" href="#subjects">ابدأ الدراسة</a><a class="btn secondary" href="#planner">رتّب جدولك</a></div></div>
+<div class="hero-card"><strong>06</strong><b>مواد السادس العلمي</b><br><small>نظّم وقتك وراجع باستمرار</small><hr style="border:0;border-top:1px solid var(--line);margin:18px 0"><b>إنجازك يبدأ اليوم</b><p class="muted">اختبر نفسك وتابع مهامك اليومية من نفس الصفحة.</p></div>
+</section>
+<section class="section" id="subjects"><div class="section-head"><div><h2>المواد الدراسية</h2><div class="muted">اختار المادة حتى تبدأ المراجعة</div></div></div>
+<div class="subjects">
+<a class="subject" href="#quiz"><div class="emoji">📐</div><h3>الرياضيات</h3><p>القوانين، المسائل والتدريب</p></a>
+<a class="subject" href="#quiz"><div class="emoji">⚡</div><h3>الفيزياء</h3><p>المفاهيم والمسائل المهمة</p></a>
+<a class="subject" href="#quiz"><div class="emoji">🧪</div><h3>الكيمياء</h3><p>المعادلات والتفاعلات</p></a>
+<a class="subject" href="#quiz"><div class="emoji">🧬</div><h3>الأحياء</h3><p>الفهم والمراجعة</p></a>
+<a class="subject" href="#quiz"><div class="emoji">📖</div><h3>اللغة العربية</h3><p>القواعد والأدب</p></a>
+<a class="subject" href="#quiz"><div class="emoji">🌍</div><h3>اللغة الإنكليزية</h3><p>القواعد والقراءة</p></a>
+</div></section>
+<section class="section"><div class="section-head"><div><h2>أدوات الطالب</h2><div class="muted">أدوات بسيطة تساعدك على الاستمرار</div></div></div>
+<div class="grid2">
+<div class="panel" id="quiz"><h3>اختبر معلوماتك</h3><div class="muted">سؤال تجريبي — أحياء</div><div class="quiz-q">ما الوحدة الأساسية لبناء جسم الكائن الحي؟</div><div class="answers"><button class="answer" data-correct="false">النسيج</button><button class="answer" data-correct="true">الخلية</button><button class="answer" data-correct="false">العضو</button></div><div class="result" id="quizResult" aria-live="polite"></div></div>
+<div class="panel"><h3>الوزاريات والمراجعات</h3><p class="muted">مساحة مخصصة لتنظيم الأسئلة الوزارية حسب المادة والفصل والسنة.</p><div class="notice">قريباً: فهرس الأسئلة والملخصات بعد تجهيز المحتوى ومراجعته حتى تكون الإجابات دقيقة.</div></div>
+</div></section>
+<section class="section" id="planner"><div class="section-head"><div><h2>جدول دراستي</h2><div class="muted">أضف مهامك اليومية وحدد اللي أنجزته</div></div></div>
+<div class="panel"><form id="taskForm" class="taskrow"><input id="taskInput" maxlength="90" placeholder="مثلاً: مراجعة الفصل الأول — فيزياء" required><button class="btn" type="submit">إضافة</button></form><div id="tasks"></div><div class="muted" id="progress">ما عندك مهام بعد. أضف أول مهمة!</div></div></section>
+<section class="section"><div class="panel"><h3>المساعد الذكي</h3><p class="muted">نخطط لإضافة مساعد يشرح الدروس، يبسط الأفكار ويساعدك بحل الأسئلة خطوة بخطوة.</p><div class="notice">هذه الميزة قيد التطوير، ولا تتوفر محادثة ذكاء اصطناعي مباشرة في النسخة الحالية.</div></div></section>
+</main>
+<footer class="footer">مُنجز Moonjez © 2026 — صُمم لمساعدة طلبة السادس العلمي في العراق</footer>
+</div>
 <script>
-const $ = id => document.getElementById(id);
-let lang = "ar";
-const copyText = async (value, target) => {
-  if (!value) { $(target).textContent = lang==="ar" ? "ماكو نص للنسخ." : "Nothing to copy."; return; }
-  try { await navigator.clipboard.writeText(value); $(target).textContent = lang==="ar" ? "تم النسخ." : "Copied."; }
-  catch { $(target).textContent = lang==="ar" ? "تعذّر النسخ؛ حدّد النص وانسخه يدوياً." : "Copy unavailable; select and copy manually."; }
-};
-$("countText").addEventListener("input", () => {
-  const v=$("countText").value;
-  const words=v.trim()?v.trim().split(/\s+/u).length:0;
-  $("words").textContent=(lang==="ar"?"الكلمات: ":"Words: ")+words;
-  $("chars").textContent=(lang==="ar"?"الحروف: ":"Characters: ")+v.length;
-  $("charsNo").textContent=(lang==="ar"?"بدون مسافات: ":"No spaces: ")+v.replace(/\s/g,"").length;
-});
-$("cleanBtn").onclick=()=>{
-  const v=$("cleanInput").value.replace(/[ \t]+/g," ").replace(/\n\s*\n+/g,"\n").trim();
-  $("cleanInput").value=v; $("cleanResult").textContent=lang==="ar"?"تم تنظيف النص.":"Text cleaned.";
-};
-$("copyClean").onclick=()=>copyText($("cleanInput").value,"cleanResult");
-$("upperBtn").onclick=()=>{$("caseInput").value=$("caseInput").value.toUpperCase();$("caseResult").textContent=lang==="ar"?"تم التحويل.":"Converted.";};
-$("lowerBtn").onclick=()=>{$("caseInput").value=$("caseInput").value.toLowerCase();$("caseResult").textContent=lang==="ar"?"تم التحويل.":"Converted.";};
-$("copyCase").onclick=()=>copyText($("caseInput").value,"caseResult");
-$("generateBtn").onclick=()=>{
-  const n=Math.max(8,Math.min(40,Number($("passLength").value)||16));
-  const chars="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*+-_";
-  const random=new Uint32Array(n); crypto.getRandomValues(random);
-  $("password").value=Array.from(random,x=>chars[x%chars.length]).join("");
-  $("passResult").textContent=lang==="ar"?"تم إنشاء كلمة المرور على جهازك.":"Password generated on your device.";
-};
-$("copyPass").onclick=()=>copyText($("password").value,"passResult");
-const translations={
- en:{tag:"Free • Fast • No sign-up",headline:"Smart tools. Get more done.",intro:"A simple collection of tools for writing and text productivity. Works in your browser with no account.",notice:"This first version includes free text tools that run in your browser. Your text is not sent to a server.",wcTitle:"Word & Character Counter",wcDesc:"Type or paste text to count words and characters.",cleanTitle:"Text Cleaner",cleanDesc:"Remove extra spaces and blank lines.",caseTitle:"Text Case Converter",caseDesc:"Convert English text to uppercase or lowercase.",passTitle:"Password Generator",passDesc:"Create a random password for personal use.",lengthLabel:"Password length",cleanBtn:"Clean text",copy:"Copy",copyResult:"Copy result",generate:"Generate password",copyPass:"Copy password",footer:"© 2026 Smartly Tools · Free tools for everyone",placeholder:"Type your text here...",paste:"Paste your text here...",passDone:"Password generated on your device."},
- ar:{tag:"مجانية • سريعة • بدون تسجيل",headline:"أدوات ذكية، تنجز أكثر",intro:"مجموعة أدوات بسيطة تساعدك بالكتابة وتنظيم النصوص. تعمل مباشرة من جهازك بدون إنشاء حساب.",notice:"الإصدار الأول يحتوي أدوات نصية مجانية تعمل داخل المتصفح. ما نطلب منك معلومات شخصية، والنصوص ما تنرسل إلى خادم.",wcTitle:"عداد الكلمات والحروف",wcDesc:"اكتب أو الصق النص حتى تعرف عدد الكلمات والحروف.",cleanTitle:"تنظيف النص",cleanDesc:"إزالة المسافات الزائدة والأسطر الفارغة.",caseTitle:"تغيير حالة الأحرف",caseDesc:"حوّل النص الإنكليزي إلى أحرف كبيرة أو صغيرة.",passTitle:"مولّد كلمات مرور",passDesc:"أنشئ كلمة مرور عشوائية للاستخدام الشخصي.",lengthLabel:"طول كلمة المرور",footer:"© 2026 Smartly Tools · أدوات مجانية للجميع"}
-};
-$("langBtn").onclick=()=>{
-  lang=lang==="ar"?"en":"ar"; const t=translations[lang];
-  document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
-  $("langBtn").textContent=lang==="ar"?"English":"العربية";
-  ["tag","headline","intro","notice","wcTitle","wcDesc","cleanTitle","cleanDesc","caseTitle","caseDesc","passTitle","passDesc","lengthLabel","footer"].forEach(id=>$(id).textContent=t[id]);
-  $("countText").placeholder=lang==="ar"?"اكتب النص هنا...":"Type your text here...";
-  $("cleanInput").placeholder=lang==="ar"?"الصق النص هنا...":"Paste your text here...";
-  $("caseInput").placeholder=lang==="ar"?"اكتب النص الإنكليزي هنا...":"Paste English text...";
-  $("words").textContent=(lang==="ar"?"الكلمات: ":"Words: ")+($("countText").value.trim()? $("countText").value.trim().split(/\s+/u).length:0);
-  $("chars").textContent=(lang==="ar"?"الحروف: ":"Characters: ")+$("countText").value.length;
-  $("charsNo").textContent=(lang==="ar"?"بدون مسافات: ":"No spaces: ")+$("countText").value.replace(/\s/g,"").length;
-  $("cleanBtn").textContent=lang==="ar"?"تنظيف النص":"Clean text";
-  $("copyClean").textContent=lang==="ar"?"نسخ":"Copy";
-  $("copyCase").textContent=lang==="ar"?"نسخ النتيجة":"Copy result";
-  $("generateBtn").textContent=lang==="ar"?"إنشاء كلمة مرور":"Generate password";
-  $("copyPass").textContent=lang==="ar"?"نسخ كلمة المرور":"Copy password";
-};
+const answers=[...document.querySelectorAll('.answer')];answers.forEach(b=>b.addEventListener('click',()=>{answers.forEach(x=>x.classList.remove('selected'));b.classList.add('selected');document.getElementById('quizResult').textContent=b.dataset.correct==='true'?'إجابة صحيحة! أحسنت.':'مو صحيح، حاول مرة ثانية.';}));
+const key='moonjez_tasks_v1';let tasks=[];try{tasks=JSON.parse(localStorage.getItem(key)||'[]')}catch(e){tasks=[]}
+const list=document.getElementById('tasks'),progress=document.getElementById('progress');
+function save(){try{localStorage.setItem(key,JSON.stringify(tasks))}catch(e){}render()}
+function render(){list.innerHTML='';tasks.forEach((t,i)=>{const row=document.createElement('div');row.className='task'+(t.done?' done':'');const label=document.createElement('label'),check=document.createElement('input'),span=document.createElement('span'),del=document.createElement('button');check.type='checkbox';check.checked=t.done;check.addEventListener('change',()=>{tasks[i].done=check.checked;save()});span.textContent=t.text;label.append(check,span);del.className='delete';del.type='button';del.textContent='×';del.setAttribute('aria-label','حذف المهمة');del.addEventListener('click',()=>{tasks.splice(i,1);save()});row.append(label,del);list.append(row)});const done=tasks.filter(t=>t.done).length;progress.textContent=tasks.length?'أنجزت '+done+' من '+tasks.length+' مهام':'ما عندك مهام بعد. أضف أول مهمة!'}
+document.getElementById('taskForm').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('taskInput'),v=input.value.trim();if(!v)return;tasks.push({text:v,done:false});input.value='';save()});render();
 </script>
 </body>
 </html>
