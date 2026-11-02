@@ -25,15 +25,26 @@ export default {
       return send({token:p+"."+await tokenSign(p,env.SESSION_SECRET)});
     }
     if(url.pathname==="/api/resources"&&request.method==="GET"){
-      if(!env.PDFS)return send({error:"تخزين PDF غير مربوط بعد."},503);
-      const l=await env.PDFS.list({prefix:"pdfs/",limit:1000,include:["customMetadata"]});
-      return send({resources:l.objects.map(o=>({key:o.key,title:o.customMetadata?.title||"ملف وزاري",subject:o.customMetadata?.subject||"",kind:o.customMetadata?.kind||"ministerial",year:o.customMetadata?.year||"",round:o.customMetadata?.round||""}))});
+      if(env.PDFS){
+        const l=await env.PDFS.list({prefix:"pdfs/",limit:1000,include:["customMetadata"]});
+        return send({resources:l.objects.map(o=>({key:o.key,title:o.customMetadata?.title||"ملف وزاري",subject:o.customMetadata?.subject||"",kind:o.customMetadata?.kind||"ministerial",year:o.customMetadata?.year||"",round:o.customMetadata?.round||""}))});
+      }
+      const repo=await fetch("https://api.github.com/repos/alimf389-commits/Moonjez/contents/pdfs?ref=main",{headers:{"Accept":"application/vnd.github+json","User-Agent":"Moonjez"}});
+      if(!repo.ok)return send({error:"تعذر تحميل مكتبة الملفات."},502);
+      const files=await repo.json();
+      return send({resources:files.filter(x=>x.type==="file"&&x.name.toLowerCase().endsWith(".pdf")).map(x=>({key:x.path,title:x.name.replace(/\\.pdf$/i,"").replace(/[‎⁨⁩]/g,""),subject:"رياضيات",kind:"ministerial",year:"2011-2023",round:"جميع الأدوار"}))});
     }
     if(url.pathname.startsWith("/api/file/")&&request.method==="GET"){
-      if(!env.PDFS)return send({error:"التخزين غير متاح."},503);
       const key=decodeURIComponent(url.pathname.slice(10));if(!key.startsWith("pdfs/")||key.includes(".."))return send({error:"الملف غير موجود."},404);
-      const obj=await env.PDFS.get(key);if(!obj)return send({error:"الملف غير موجود."},404);
-      const headers=new Headers(cors);obj.writeHttpMetadata(headers);headers.set("Content-Type","application/pdf");headers.set("Content-Disposition","inline");return new Response(obj.body,{headers});
+      if(env.PDFS){
+        const obj=await env.PDFS.get(key);if(!obj)return send({error:"الملف غير موجود."},404);
+        const headers=new Headers(cors);obj.writeHttpMetadata(headers);headers.set("Content-Type","application/pdf");headers.set("Content-Disposition","inline");return new Response(obj.body,{headers});
+      }
+      const rawPath=key.split("/").map(encodeURIComponent).join("/");
+      const file=await fetch("https://raw.githubusercontent.com/alimf389-commits/Moonjez/main/"+rawPath);
+      if(!file.ok)return send({error:"الملف غير موجود."},404);
+      const headers=new Headers(cors);headers.set("Content-Type","application/pdf");headers.set("Content-Disposition","inline");
+      return new Response(file.body,{headers});
     }
     if(url.pathname==="/api/admin/upload"&&request.method==="POST"){
       if(!await isAdmin(request,env))return send({error:"انتهت جلسة الإدارة أو كلمة المرور غير صحيحة."},401);
