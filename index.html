@@ -21,7 +21,8 @@
 .resource a{display:inline-block;background:var(--accent);padding:9px 13px;border-radius:10px;font-weight:800;font-size:13px}
 .resource.secondary a{background:#21443f}
 @media(max-width:700px){.library-tools,.resource-grid{grid-template-columns:1fr}}
-\n
+
+
 .question-bank{display:grid;gap:13px;margin-top:14px}
 .q-card{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:17px}
 .q-meta{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--cyan);font-weight:800}
@@ -33,7 +34,8 @@
 .q-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
 .q-actions button{background:var(--accent);border:0;color:white;border-radius:10px;padding:9px 13px;font-weight:800}
 .q-actions button.alt{background:#21443f}
-\n.photo-search{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.photo-box{background:#101b2c;border:1px dashed #64779a;border-radius:16px;padding:16px}.photo-box textarea{width:100%;min-height:100px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px}.photo-preview{display:none;width:100%;max-height:230px;object-fit:contain;margin:10px 0;border-radius:12px}.photo-results{display:grid;gap:10px;margin-top:14px}.photo-result h3{margin:0 0 10px}.answer-body{white-space:pre-wrap;line-height:2;color:var(--text)}.ministerial-answer{border-right:3px solid var(--good)}#solvePhoto:disabled,#solveText:disabled{opacity:.55;cursor:wait}.photo-result{background:var(--panel2);padding:13px;border-radius:12px;border:1px solid var(--line)}.photo-status{color:var(--muted);font-size:13px;margin-top:10px}@media(max-width:700px){.photo-search{grid-template-columns:1fr}}</style>
+
+.photo-search{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.photo-box{background:#101b2c;border:1px dashed #64779a;border-radius:16px;padding:16px}.photo-box textarea{width:100%;min-height:100px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px}.photo-preview{display:none;width:100%;max-height:230px;object-fit:contain;margin:10px 0;border-radius:12px}.photo-results{display:grid;gap:10px;margin-top:14px}.photo-result h3{margin:0 0 10px}.answer-body{white-space:pre-wrap;line-height:2;color:var(--text)}.ministerial-answer{border-right:3px solid var(--good)}#solvePhoto:disabled,#solveText:disabled{opacity:.55;cursor:wait}.photo-result{background:var(--panel2);padding:13px;border-radius:12px;border:1px solid var(--line)}.photo-status{color:var(--muted);font-size:13px;margin-top:10px}@media(max-width:700px){.photo-search{grid-template-columns:1fr}}</style>
 </head>
 <body>
 <div class="wrap">
@@ -104,11 +106,13 @@
 <div class="notice" style="margin-top:14px">هذه بداية بنك الرياضيات وليست أرشيفاً كاملاً. السؤال الوزاري موضح بسنة ودور ومصدر، وأسئلة الإثرائي من إعداد Moonjez. نضيف بقية السنوات والفصول بعد مطابقة نصوصها مع أوراق الامتحان.</div>
 </div>
 </section>
-\n
+
+
 <section class="section" id="adminPanel"><div class="section-head"><div><h2>لوحة إدارة ملفات مُنجز</h2><div class="muted">ارفع الوزاريات والإثرائيات حتى تظهر للطلاب داخل المكتبة</div></div></div><div class="panel">
 <div id="adminLoginBox"><p class="muted">الدخول خاص بإدارة الموقع.</p><div class="taskrow"><input id="adminPassword" type="password" placeholder="كلمة مرور الإدارة"><button class="btn" id="adminLogin" type="button">دخول</button></div></div>
 <form id="pdfUploadForm" hidden><div class="library-tools"><select id="pdfSubject" required><option value="">اختار المادة</option><option>الرياضيات</option><option>الفيزياء</option><option>الكيمياء</option><option>الأحياء</option><option>اللغة العربية</option><option>اللغة الإنكليزية</option><option>التربية الإسلامية</option></select><select id="pdfKind"><option value="ministerial">وزاريات</option><option value="enrichment">إثرائيات</option></select><input id="pdfYear" inputmode="numeric" maxlength="4" placeholder="السنة (مثلاً 2025)"><select id="pdfRound"><option value="">الدور (اختياري)</option><option>الأول</option><option>الثاني</option><option>الثالث</option></select></div><input id="pdfTitle" placeholder="عنوان الملف (اختياري)" style="width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:11px;color:var(--text);padding:12px;margin-bottom:12px"><div class="photo-box"><b>ملف PDF</b><p class="muted">الحد الأعلى 20 ميغابايت.</p><input id="pdfFile" type="file" accept="application/pdf,.pdf" required></div><div class="actions"><button class="btn" id="pdfUploadButton" type="submit">رفع إلى المكتبة</button><button class="btn secondary" id="adminLogout" type="button">تسجيل خروج</button></div></form><div id="adminStatus" class="photo-status">تحتاج تفعيل مساحة التخزين السحابية قبل أول رفع.</div></div></section>
-\n<section class="section" id="planner"><div class="section-head"><div><h2>جدول دراستي</h2><div class="muted">أضف مهامك اليومية وحدد اللي أنجزته</div></div></div>
+
+<section class="section" id="planner"><div class="section-head"><div><h2>جدول دراستي</h2><div class="muted">أضف مهامك اليومية وحدد اللي أنجزته</div></div></div>
 <div class="panel"><form id="taskForm" class="taskrow"><input id="taskInput" maxlength="90" placeholder="مثلاً: مراجعة الفصل الأول — فيزياء" required><button class="btn" type="submit">إضافة</button></form><div id="tasks"></div><div class="muted" id="progress">ما عندك مهام بعد. أضف أول مهمة!</div></div></section>
 <section class="section"><div class="panel"><h3>المساعد الذكي</h3><p class="muted">نخطط لإضافة مساعد يشرح الدروس، يبسط الأفكار ويساعدك بحل الأسئلة خطوة بخطوة.</p><div class="notice">هذه الميزة قيد التطوير، ولا تتوفر محادثة ذكاء اصطناعي مباشرة في النسخة الحالية.</div></div></section>
 </main>
@@ -117,7 +121,8 @@
 
 <script>
 // ضع رابط Cloudflare Worker المنشور هنا بعد إكمال إعداد الخادم.
-const SOLVER_API_URL = "PASTE_CLOUDFLARE_WORKER_URL_HERE";\nconst ADMIN_API_URL = SOLVER_API_URL;
+const SOLVER_API_URL = "PASTE_CLOUDFLARE_WORKER_URL_HERE";
+const ADMIN_API_URL = SOLVER_API_URL;
 
 const adminBox=document.getElementById('adminLoginBox'),uploadForm=document.getElementById('pdfUploadForm'),adminStatus=document.getElementById('adminStatus');
 let adminToken=sessionStorage.getItem('moonjez_admin_token')||'';
@@ -128,7 +133,8 @@ document.getElementById('adminLogin').addEventListener('click',async()=>{try{con
 document.getElementById('adminLogout').addEventListener('click',()=>{adminToken='';sessionStorage.removeItem('moonjez_admin_token');adminState();adminMsg('تم تسجيل الخروج.');});
 uploadForm.addEventListener('submit',async e=>{e.preventDefault();const file=document.getElementById('pdfFile').files[0];if(!file)return adminMsg('اختار ملف PDF.');const b=document.getElementById('pdfUploadButton');b.disabled=true;adminMsg('جاري رفع الملف...');const f=new FormData();f.append('file',file);f.append('subject',document.getElementById('pdfSubject').value);f.append('kind',document.getElementById('pdfKind').value);f.append('year',document.getElementById('pdfYear').value);f.append('round',document.getElementById('pdfRound').value);f.append('title',document.getElementById('pdfTitle').value);try{const r=await fetch(ADMIN_API_URL+'/api/admin/upload',{method:'POST',headers:{Authorization:'Bearer '+adminToken},body:f});const d=await r.json();if(!r.ok)throw Error(d.error||'فشل الرفع');adminMsg('انرفع الملف بنجاح وصار متاحاً للطلاب.');uploadForm.reset();loadPdfLibrary();}catch(e){adminMsg(e.message);if(e.message.includes('جلسة')){adminToken='';sessionStorage.removeItem('moonjez_admin_token');adminState();}}finally{b.disabled=false;}});
 async function loadPdfLibrary(){const list=document.getElementById('pdfLibraryList');if(!list)return;try{const r=await fetch(ADMIN_API_URL+'/api/resources');const d=await r.json();if(!r.ok)throw Error(d.error||'تعذر تحميل المكتبة');list.innerHTML='';if(!d.resources.length){list.innerHTML='<div class="notice">ماكو ملفات PDF مرفوعة بعد.</div>';return;}d.resources.forEach(x=>{const a=document.createElement('article');a.className='resource';const k=document.createElement('div');k.className='kind';k.textContent=(x.kind==='enrichment'?'إثرائي':'وزاري')+' — '+x.subject;const h=document.createElement('h3');h.textContent=x.title;const p=document.createElement('p');p.textContent=[x.year,x.round?'الدور '+x.round:''].filter(Boolean).join(' · ');const l=document.createElement('a');l.href=ADMIN_API_URL+'/api/file/'+encodeURIComponent(x.key);l.target='_blank';l.rel='noopener';l.textContent='فتح ملف PDF';a.append(k,h,p,l);list.append(a);});}catch(e){list.innerHTML='<div class="notice">'+e.message+'</div>';}}
-\nconst imageInput=document.getElementById('questionImage');
+
+const imageInput=document.getElementById('questionImage');
 const preview=document.getElementById('questionPreview');
 const photoStatus=document.getElementById('photoStatus');
 const photoResults=document.getElementById('photoResults');
@@ -181,14 +187,17 @@ async function solveQuestion(withImage){
  }finally{buttons.forEach(b=>b.disabled=false);}
 }
 document.getElementById('solvePhoto').addEventListener('click',()=>solveQuestion(true));
-document.getElementById('solveText').addEventListener('click',()=>solveQuestion(false));\nloadPdfLibrary();
+document.getElementById('solveText').addEventListener('click',()=>solveQuestion(false));
+loadPdfLibrary();
 // تم حذف مستمعات فلاتر قديمة كانت تشير إلى عناصر غير موجودة.
-\n
+
+
 document.querySelectorAll('.show-solution').forEach(btn=>btn.addEventListener('click',()=>{const sol=btn.closest('.q-card').querySelector('.q-solution');sol.classList.toggle('show');btn.textContent=sol.classList.contains('show')?'إخفاء الحل':'عرض الحل'}));
 function filterBank(){const cat=document.getElementById('bankCategory').value;const chapter=document.getElementById('bankChapter').value;document.querySelectorAll('#questionBank .q-card').forEach(card=>{card.hidden=!((cat==='all'||card.dataset.category===cat)&&(chapter==='all'||card.dataset.chapter===chapter));});}
 document.getElementById('bankCategory').addEventListener('change',filterBank);
 document.getElementById('bankChapter').addEventListener('change',filterBank);
-\nconst answers=[...document.querySelectorAll('.answer')];answers.forEach(b=>b.addEventListener('click',()=>{answers.forEach(x=>x.classList.remove('selected'));b.classList.add('selected');document.getElementById('quizResult').textContent=b.dataset.correct==='true'?'إجابة صحيحة! أحسنت.':'مو صحيح، حاول مرة ثانية.';}));
+
+const answers=[...document.querySelectorAll('.answer')];answers.forEach(b=>b.addEventListener('click',()=>{answers.forEach(x=>x.classList.remove('selected'));b.classList.add('selected');document.getElementById('quizResult').textContent=b.dataset.correct==='true'?'إجابة صحيحة! أحسنت.':'مو صحيح، حاول مرة ثانية.';}));
 const key='moonjez_tasks_v1';let tasks=[];try{tasks=JSON.parse(localStorage.getItem(key)||'[]')}catch(e){tasks=[]}
 const list=document.getElementById('tasks'),progress=document.getElementById('progress');
 function save(){try{localStorage.setItem(key,JSON.stringify(tasks))}catch(e){}render()}
