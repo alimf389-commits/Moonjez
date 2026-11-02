@@ -26,7 +26,7 @@ export default {
     }
     if(url.pathname==="/api/resources"&&request.method==="GET"){
       if(!env.PDFS)return send({error:"تخزين PDF غير مربوط بعد."},503);
-      const l=await env.PDFS.list({prefix:"pdfs/",limit:1000});
+      const l=await env.PDFS.list({prefix:"pdfs/",limit:1000,include:["customMetadata"]});
       return send({resources:l.objects.map(o=>({key:o.key,title:o.customMetadata?.title||"ملف وزاري",subject:o.customMetadata?.subject||"",kind:o.customMetadata?.kind||"ministerial",year:o.customMetadata?.year||"",round:o.customMetadata?.round||""}))});
     }
     if(url.pathname.startsWith("/api/file/")&&request.method==="GET"){
