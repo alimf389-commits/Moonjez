@@ -1,9 +1,50 @@
+
+const b64url=(bytes)=>btoa(String.fromCharCode(...new Uint8Array(bytes))).replace(/\\+/g,"-").replace(/\\//g,"_").replace(/=+$/,"");
+async function tokenSign(value,secret){const key=await crypto.subtle.importKey("raw",new TextEncoder().encode(secret),{name:"HMAC",hash:"SHA-256"},false,["sign"]);return b64url(await crypto.subtle.sign("HMAC",key,new TextEncoder().encode(value)));}
+async function isAdmin(req,env){const [p,s]=(req.headers.get("Authorization")||"").replace(/^Bearer\\s+/i,"").split(".");if(!p||!s||!env.SESSION_SECRET)return false;if(await tokenSign(p,env.SESSION_SECRET)!==s)return false;try{return JSON.parse(atob(p.replace(/-/g,"+").replace(/_/g,"/"))).exp>Date.now();}catch{return false;}}
+function cleanMeta(v){return String(v||"").trim().replace(/[\\\\/\\\\?%*:|"<>]/g,"-").slice(0,100);}
+
 export default {
   async fetch(request, env) {
+
+    const url=new URL(request.url);
+    const send=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{...cors,"Content-Type":"application/json; charset=utf-8"}});
+    if(url.pathname==="/api/admin/login"&&request.method==="POST"){
+      if(!env.ADMIN_PASSWORD||!env.SESSION_SECRET)return send({error:"إعدادات لوحة الإدارة غير مكتملة."},503);
+      let b;try{b=await request.json();}catch{return send({error:"بيانات الدخول غير صالحة."},400);}
+      if(b.password!==env.ADMIN_PASSWORD)return send({error:"كلمة المرور غير صحيحة."},401);
+      const p=b64url(new TextEncoder().encode(JSON.stringify({exp:Date.now()+43200000})));
+      return send({token:p+"."+await tokenSign(p,env.SESSION_SECRET)});
+    }
+    if(url.pathname==="/api/resources"&&request.method==="GET"){
+      if(!env.PDFS)return send({error:"تخزين PDF غير مربوط بعد."},503);
+      const l=await env.PDFS.list({prefix:"pdfs/",limit:1000});
+      return send({resources:l.objects.map(o=>({key:o.key,title:o.customMetadata?.title||"ملف وزاري",subject:o.customMetadata?.subject||"",kind:o.customMetadata?.kind||"ministerial",year:o.customMetadata?.year||"",round:o.customMetadata?.round||""}))});
+    }
+    if(url.pathname.startsWith("/api/file/")&&request.method==="GET"){
+      if(!env.PDFS)return send({error:"التخزين غير متاح."},503);
+      const key=decodeURIComponent(url.pathname.slice(10));if(!key.startsWith("pdfs/")||key.includes(".."))return send({error:"الملف غير موجود."},404);
+      const obj=await env.PDFS.get(key);if(!obj)return send({error:"الملف غير موجود."},404);
+      const headers=new Headers(cors);obj.writeHttpMetadata(headers);headers.set("Content-Type","application/pdf");headers.set("Content-Disposition","inline");return new Response(obj.body,{headers});
+    }
+    if(url.pathname==="/api/admin/upload"&&request.method==="POST"){
+      if(!await isAdmin(request,env))return send({error:"انتهت جلسة الإدارة أو كلمة المرور غير صحيحة."},401);
+      if(!env.PDFS)return send({error:"اربط مساحة R2 باسم PDFS."},503);
+      let f;try{f=await request.formData();}catch{return send({error:"تعذر قراءة الملف."},400);}
+      const file=f.get("file");if(!(file instanceof File)||!file.size)return send({error:"اختار ملف PDF."},400);
+      if(file.size>20*1024*1024)return send({error:"الحد الأعلى 20 ميغابايت."},413);
+      if(String.fromCharCode(...new Uint8Array(await file.slice(0,5).arrayBuffer()))!=="%PDF-")return send({error:"الملف ليس PDF صالحاً."},415);
+      const title=cleanMeta(f.get("title")||file.name.replace(/\\.pdf$/i,""))||"ملف وزاري";
+      const subject=cleanMeta(f.get("subject"));if(!subject)return send({error:"اختار المادة."},400);
+      const kind=f.get("kind")==="enrichment"?"enrichment":"ministerial",year=String(f.get("year")||"").replace(/[^0-9]/g,"").slice(0,4),round=cleanMeta(f.get("round"));
+      const key="pdfs/"+crypto.randomUUID()+".pdf";
+      await env.PDFS.put(key,file.stream(),{httpMetadata:{contentType:"application/pdf"},customMetadata:{title,subject,kind,year,round}});
+      return send({ok:true,title});
+    }
     const cors = {
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
       "Access-Control-Max-Age": "86400"
     };
     if (request.method === "OPTIONS") return new Response(null, { headers: cors });
