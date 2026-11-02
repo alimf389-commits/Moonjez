@@ -1,11 +1,19 @@
 
-const b64url=(bytes)=>btoa(String.fromCharCode(...new Uint8Array(bytes))).replace(/\\+/g,"-").replace(/\\//g,"_").replace(/=+$/,"");
+
+const b64url=(bytes)=>btoa(String.fromCharCode(...new Uint8Array(bytes))).replaceAll("+","-").replaceAll("/","_").replaceAll("=","");
 async function tokenSign(value,secret){const key=await crypto.subtle.importKey("raw",new TextEncoder().encode(secret),{name:"HMAC",hash:"SHA-256"},false,["sign"]);return b64url(await crypto.subtle.sign("HMAC",key,new TextEncoder().encode(value)));}
-async function isAdmin(req,env){const [p,s]=(req.headers.get("Authorization")||"").replace(/^Bearer\\s+/i,"").split(".");if(!p||!s||!env.SESSION_SECRET)return false;if(await tokenSign(p,env.SESSION_SECRET)!==s)return false;try{return JSON.parse(atob(p.replace(/-/g,"+").replace(/_/g,"/"))).exp>Date.now();}catch{return false;}}
-function cleanMeta(v){return String(v||"").trim().replace(/[\\\\/\\\\?%*:|"<>]/g,"-").slice(0,100);}
+async function isAdmin(req,env){const auth=req.headers.get("Authorization")||"";const token=auth.startsWith("Bearer ")?auth.slice(7):"";const [p,s]=token.split(".");if(!p||!s||!env.SESSION_SECRET)return false;if(await tokenSign(p,env.SESSION_SECRET)!==s)return false;try{return JSON.parse(atob(p.replaceAll("-","+").replaceAll("_","/"))).exp>Date.now();}catch{return false;}}
+function cleanMeta(v){return String(v||"").trim().replace(/[\/?%*:|"<>]/g,"-").slice(0,100);}
+
 
 export default {
   async fetch(request, env) {
+    const cors = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      "Access-Control-Max-Age": "86400"
+    };
 
     const url=new URL(request.url);
     const send=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{...cors,"Content-Type":"application/json; charset=utf-8"}});
@@ -34,19 +42,13 @@ export default {
       const file=f.get("file");if(!(file instanceof File)||!file.size)return send({error:"اختار ملف PDF."},400);
       if(file.size>20*1024*1024)return send({error:"الحد الأعلى 20 ميغابايت."},413);
       if(String.fromCharCode(...new Uint8Array(await file.slice(0,5).arrayBuffer()))!=="%PDF-")return send({error:"الملف ليس PDF صالحاً."},415);
-      const title=cleanMeta(f.get("title")||file.name.replace(/\\.pdf$/i,""))||"ملف وزاري";
+      const title=cleanMeta(f.get("title")||(file.name.toLowerCase().endsWith(".pdf")?file.name.slice(0,-4):file.name))||"ملف وزاري";
       const subject=cleanMeta(f.get("subject"));if(!subject)return send({error:"اختار المادة."},400);
       const kind=f.get("kind")==="enrichment"?"enrichment":"ministerial",year=String(f.get("year")||"").replace(/[^0-9]/g,"").slice(0,4),round=cleanMeta(f.get("round"));
       const key="pdfs/"+crypto.randomUUID()+".pdf";
       await env.PDFS.put(key,file.stream(),{httpMetadata:{contentType:"application/pdf"},customMetadata:{title,subject,kind,year,round}});
       return send({ok:true,title});
     }
-    const cors = {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      "Access-Control-Max-Age": "86400"
-    };
     if (request.method === "OPTIONS") return new Response(null, { headers: cors });
     const json = (body, status = 200) => new Response(JSON.stringify(body), {
       status, headers: { ...cors, "Content-Type": "application/json; charset=utf-8" }
