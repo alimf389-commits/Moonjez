@@ -1,4 +1,1 @@
-name = "moonjez-solver"
-main = "src/index.js"
-compatibility_date = "2026-10-01"
-workers_dev = true
+name = "moonjez-solver"\nmain = "src/index.js"\ncompatibility_date = "2026-10-01"\nworkers_dev = true\n\n[[r2_buckets]]\nbinding = "PDFS"\nbucket_name = "moonjez-pdfs"\n
